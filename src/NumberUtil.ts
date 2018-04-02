@@ -52,9 +52,13 @@ export class NumberUtil {
    * @returns object
    */
   static fixObj (obj: object): object {
+    if (!obj) return obj
     for (let key of Object.keys(obj)) {
       if (typeof(obj[key]) === 'number') {
         obj[key] = this.fixNumPrecision(obj[key])
+      }
+      if (typeof(obj[key]) === 'object') {
+        obj[key] = this.fixObj(obj[key])
       }
     }
     return obj

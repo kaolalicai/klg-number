@@ -37,6 +37,9 @@ describe('NumberUtil test', async function () {
 
   it(' fix obj ', async () => {
     assert.deepEqual(NumberUtil.fixObj({a: 0.1 + 0.2}), {a: 0.3})
+    assert.deepEqual(NumberUtil.fixObj(null), null)
+    assert.deepEqual(NumberUtil.fixObj({b: 2, aaa: {a: 0.1 + 0.2}}), {b: 2, aaa: {a: 0.3}})
+    assert.deepEqual(NumberUtil.fixObj({'$set': {amount: 0.30000000000000004}}), {'$set': {amount: 0.3}})
   })
 
   it(' cutNum ', async () => {
