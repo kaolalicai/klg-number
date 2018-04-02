@@ -35,6 +35,10 @@ describe('NumberUtil test', async function () {
     assert.equal(NumberUtil.cutNum(10 / 3), 3.33)
   })
 
+  it(' fix obj ', async () => {
+    assert.deepEqual(NumberUtil.fixObj({a: 0.1 + 0.2}), {a: 0.3})
+  })
+
   it(' cutNum ', async () => {
     assert.ok(_.isNumber(NumberUtil.cutNum(2.335)))
     assert.equal(NumberUtil.cutNum(2.335), 2.33)

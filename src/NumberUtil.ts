@@ -26,7 +26,7 @@ export class NumberUtil {
    * 简单来说就是：四舍六入五考虑，五后非零就进一，五后为零看奇偶，五前为偶应舍去，五前为奇要进一
    * @param num
    * @param digits 默认2
-   * @returns {Number}
+   * @returns {number}
    */
   static fixedNum (num: number, digits = 2) {
     return parseFloat(Number(num).toFixed(digits))
@@ -34,16 +34,30 @@ export class NumberUtil {
 
   /**
    * 修复 0.1 + 0.2 = 0.30000000000000004 的这类数字
-   * @param num
-   * @returns {*}
+   * @param {number} num
+   * @returns {number}
    */
-  static fixNumPrecision (num: number) {
+  static fixNumPrecision (num: number): number {
     const left = Math.abs(num - this.fixedNum(num))
     // 是 0.30000000000000004 的情况才 fix
     if (left < 0.0000001) {
       return this.fixedNum(num)
     }
     return num
+  }
+
+  /**
+   * 遍历 Object 的属性，找出所有 number 类型的属性并 fixNumPrecision
+   * @param {object} obj
+   * @returns object
+   */
+  static fixObj (obj: object): object {
+    for (let key of Object.keys(obj)) {
+      if (typeof(obj[key]) === 'number') {
+        obj[key] = this.fixNumPrecision(obj[key])
+      }
+    }
+    return obj
   }
 
   /**
