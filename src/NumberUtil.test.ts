@@ -20,10 +20,9 @@ describe('NumberUtil test', async function () {
 
   it(' fixedNum ', async () => {
     assert.ok(_.isNumber(NumberUtil.fixedNum(2.335)))
-    // 惊不惊喜意不意外
-    assert.equal(NumberUtil.fixedNum(2.335), 2.33)
+    assert.equal(NumberUtil.fixedNum(2.3350), 2.34)
+    assert.equal(NumberUtil.fixedNum(2.3250), 2.33)
     assert.equal(NumberUtil.fixedNum(2.3351), 2.34)
-    assert.equal(NumberUtil.fixedNum(2.345), 2.35)
 
     assert.equal(NumberUtil.fixedNum(2.33333333, 4), 2.3333)
     assert.equal(NumberUtil.fixedNum(2.333351, 4), 2.3334)
@@ -31,8 +30,6 @@ describe('NumberUtil test', async function () {
     assert.equal(NumberUtil.fixedNum(234.4545), 234.45)
     assert.equal(NumberUtil.fixedNum(-234.4455), -234.45)
     assert.equal(NumberUtil.fixedNum(-234.4445), -234.44)
-    assert.equal(NumberUtil.cutNum(0), 0)
-    assert.equal(NumberUtil.cutNum(10 / 3), 3.33)
   })
 
   it(' fix obj ', async () => {
@@ -47,7 +44,7 @@ describe('NumberUtil test', async function () {
     assert.equal(NumberUtil.cutNum(2.335), 2.33)
     assert.equal(NumberUtil.cutNum(0.1 + 0.2), 0.3)
     assert.equal(NumberUtil.cutNum(234.4545), 234.45)
-    assert.equal(NumberUtil.cutNum(-234.4545), -234.45)
+    assert.equal(NumberUtil.cutNum(-234.4545), -234.46)
     assert.equal(NumberUtil.cutNum(0), 0)
     assert.equal(NumberUtil.cutNum(10 / 3), 3.33)
   })

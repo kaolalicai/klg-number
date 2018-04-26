@@ -1,3 +1,5 @@
+import * as _ from 'lodash'
+
 export class NumberUtil {
 
   static add (a: number, b: number) {
@@ -22,14 +24,12 @@ export class NumberUtil {
    * 四舍五入
    * 1. 为什么不用 toFixed ？toFixed return string 这个方法 return number
    * 2. 为什么不用 Math.round ？不支持指定小数位
-   * 注意 toFixed() 四舍五入的规则与数学中的规则不同，使用的是银行家舍入规则，银行家舍入:所谓银行家舍入法，其实质是一种四舍六入五取偶（又称四舍六入五留双）法。具体规则如下：
-   * 简单来说就是：四舍六入五考虑，五后非零就进一，五后为零看奇偶，五前为偶应舍去，五前为奇要进一
    * @param num
    * @param digits 默认2
    * @returns {number}
    */
   static fixedNum (num: number, digits = 2) {
-    return parseFloat(Number(num).toFixed(digits))
+    return _.round(num, digits)
   }
 
   /**
@@ -71,9 +71,6 @@ export class NumberUtil {
    * @returns {number}
    */
   static cutNum (num: number, digits = 2) {
-    if (!num) return 0
-    num = this.fixNumPrecision(num)
-    const re = new RegExp('^-?\\d+(?:\\.\\d{0,' + digits + '})?', 'gim')
-    return parseFloat(num.toString().match(re)[0])
+    return _.floor(num, digits)
   }
 }
