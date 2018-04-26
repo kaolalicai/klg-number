@@ -1,6 +1,6 @@
 {
   "name": "klg-number",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "klg number util",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
