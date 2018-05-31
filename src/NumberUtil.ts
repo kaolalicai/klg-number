@@ -71,6 +71,7 @@ export class NumberUtil {
    * @returns {number}
    */
   static cutNum (num: number, digits = 2) {
+    num = this.fixNumPrecision(num)
     return _.floor(num, digits)
   }
 }

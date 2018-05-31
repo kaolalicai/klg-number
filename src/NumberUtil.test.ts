@@ -47,6 +47,7 @@ describe('NumberUtil test', async function () {
     assert.equal(NumberUtil.cutNum(-234.4545), -234.46)
     assert.equal(NumberUtil.cutNum(0), 0)
     assert.equal(NumberUtil.cutNum(10 / 3), 3.33)
+    assert.equal(NumberUtil.cutNum(32764.999999999996), 32765)
   })
 
   it(' fixNumPrecision ', async () => {
