@@ -51,7 +51,7 @@ export class NumberUtil {
    * @param {object} obj
    * @returns object
    */
-  static fixObj (obj: object): object {
+  static fixObj<T extends object> (obj: T): T {
     if (!obj) return obj
     for (let key of Object.keys(obj)) {
       if (typeof(obj[key]) === 'number') {
