@@ -40,7 +40,7 @@ export class NumberUtil {
   static fixNumPrecision (num: number): number {
     const left = Math.abs(num - this.fixedNum(num))
     // 是 0.30000000000000004 的情况才 fix
-    if (left < 0.0000001) {
+    if (left < 0.000001) {
       return this.fixedNum(num)
     }
     return num

@@ -54,5 +54,6 @@ describe('NumberUtil test', async function () {
     assert.ok(_.isNumber(NumberUtil.fixNumPrecision(0.1 + 0.2)))
     assert.equal(NumberUtil.fixNumPrecision(0.1 + 0.2), 0.3)
     assert.equal(NumberUtil.fixNumPrecision(3.0004), 3.0004)
+    assert.equal(NumberUtil.fixNumPrecision(1.52999986581039), 1.53)
   })
 })
